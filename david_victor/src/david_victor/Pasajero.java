@@ -22,14 +22,13 @@ public class Pasajero extends Thread {
     @Override
     public void run() {
         for (int i = 1; i < 3; i++) {
-            Maleta m = new Maleta(id_pasajero + "-M" + i);
-            System.out.println("MALETA: " + m.getId_maleta());
+            Maleta m = new Maleta(id_pasajero + "-M-" + i);
             try {
-                cinta.insertar(m); //Pasajero inserta la maleta en la cinta
-               
                 sleep(500 + (int) (1000 * Math.random()));
+                cinta.insertar(m); //Pasajero inserta la maleta en la cinta
+                System.out.println(id_pasajero + " deja: "+m.getId_maleta());
             } catch (InterruptedException e) {
-            }
+            }                
 
         }
 

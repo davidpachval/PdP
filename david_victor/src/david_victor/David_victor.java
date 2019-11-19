@@ -16,12 +16,16 @@ public class David_victor {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Cinta c = new Cinta(8);
+        Cinta c = new Cinta(7);
+        Thread e1 = new Empleado(c, "Empleado1");
+        Thread e2 = new Empleado(c, "Empleado2");
+
         for(int i=1; i<21; i++){
             Thread p = new Pasajero(c, "Pasajero"+i);
             p.start();
         }
-        
+        e1.start();
+        e2.start();
         
     }
     
