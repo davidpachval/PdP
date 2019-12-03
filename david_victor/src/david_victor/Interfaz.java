@@ -5,17 +5,41 @@
  */
 package david_victor;
 
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author David Pacheco Valero
+ * @author Victor Ortiz Lahuerta
  */
 public class Interfaz extends javax.swing.JFrame {
+        Avion a;
+        Cinta c;
+        private boolean botonPulsado1 = false;
+        private boolean botonPulsado2 = false;
+        private boolean botontodo = false;
+        private StartStop pausa1 = new StartStop();
+        private StartStop pausa2 = new StartStop();
+        private StartStop todo = new StartStop();
 
     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
         initComponents();
+        
+        c = new Cinta(8, contenido_cinta);
+        a = new Avion(contenido_avion);
+        Thread e1 = new Empleado(c, a, "Empleado1", empleado1, pausa1, todo);
+        Thread e2 = new Empleado(c, a, "Empleado2", empleado2, pausa2, todo);
+        for(int i=1; i<21; i++){
+            Thread p = new Pasajero(c, "Pasajero"+i, todo);
+            p.start();
+        }
+        e1.start();
+        e2.start();
     }
 
     /**
@@ -28,34 +52,207 @@ public class Interfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        contenido_cinta = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        empleado1 = new javax.swing.JTextField();
+        empleado2 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        pausar_todo = new javax.swing.JButton();
+        parar_empleado1 = new javax.swing.JButton();
+        parar_empleado2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        contenido_avion = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setForeground(new java.awt.Color(4, 2, 3));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SUPER AEROPUERTO DE VICTOR");
-        jLabel1.setToolTipText("");
+        jLabel1.setText("AEROPUERTO DE VICTOR ORTIZ LAHUERTA");
+
+        jLabel2.setText("CONTENIDO_CINTA");
+
+        contenido_cinta.setMaximumSize(new java.awt.Dimension(0, 8));
+        contenido_cinta.setMinimumSize(new java.awt.Dimension(0, 0));
+        contenido_cinta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contenido_cintaActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("EMPLEADO 1");
+
+        jLabel4.setText("EMPLEADO 2");
+
+        empleado2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empleado2ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("CONTENIDO_AVION");
+
+        pausar_todo.setText("DETENER TODO");
+        pausar_todo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pausar_todoActionPerformed(evt);
+            }
+        });
+
+        parar_empleado1.setText("DETENER EMPLEADO 1");
+        parar_empleado1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parar_empleado1ActionPerformed(evt);
+            }
+        });
+
+        parar_empleado2.setBackground(new java.awt.Color(255, 255, 255));
+        parar_empleado2.setForeground(new java.awt.Color(51, 0, 255));
+        parar_empleado2.setText("DETENER EMPLEADO 2");
+        parar_empleado2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parar_empleado2ActionPerformed(evt);
+            }
+        });
+
+        contenido_avion.setColumns(20);
+        contenido_avion.setRows(5);
+        jScrollPane1.setViewportView(contenido_avion);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(312, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(276, 276, 276))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(358, 358, 358)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(parar_empleado1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(369, 369, 369)
+                        .addComponent(pausar_todo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(empleado1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(165, 165, 165)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(empleado2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(parar_empleado2)))
+                            .addComponent(contenido_cinta, javax.swing.GroupLayout.PREFERRED_SIZE, 1133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(331, 331, 331)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 157, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(403, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(contenido_cinta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(empleado1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(empleado2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(parar_empleado1)
+                    .addComponent(parar_empleado2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pausar_todo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void contenido_cintaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contenido_cintaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contenido_cintaActionPerformed
+
+    private void pausar_todoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pausar_todoActionPerformed
+        // TODO add your handling code here:
+        if (!botontodo) //Si no se ha pulsado
+        {
+            botontodo = true;             //lo cambiamos a pulsado
+            pausar_todo.setText("REAUNUDAR TODO");  //y cambiamos el texto
+            empleado1.setText("DESCANSANDO GENERAL"); // Cambia la casilla de texto del empleado
+            empleado2.setText("DESCANSO GENERAL");
+            parar_empleado1.setEnabled(false);
+            parar_empleado2.setEnabled(false);
+            todo.cerrar();    //Cerramos el paso para que los pintores se detengan
+        } else //Si ya se había pulsado
+        {
+            botontodo = false;            //lo cambiamos
+            pausar_todo.setText("DETENER TODO");  //y cambiamos el texto
+            parar_empleado1.setEnabled(true);
+            parar_empleado2.setEnabled(true);
+            todo.abrir();    //Abrimos el paso para que los pintores sigan trabajando
+        }
+    }//GEN-LAST:event_pausar_todoActionPerformed
+
+    private void parar_empleado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parar_empleado1ActionPerformed
+        // TODO add your handling code here:
+        if (!botonPulsado1) //Si no se ha pulsado
+        {
+            botonPulsado1 = true;             //lo cambiamos a pulsado
+            parar_empleado1.setText("REANUDAR EMPLEADO 1");  //y cambiamos el texto
+            empleado1.setText("DESCANSANDO"); // Cambia la casilla de texto del empleado
+            
+            pausa1.cerrar();    //Cerramos el paso para que los pintores se detengan
+        } else //Si ya se había pulsado
+        {
+            botonPulsado1 = false;            //lo cambiamos
+            parar_empleado1.setText("DETENER EMPLEADO 1");  //y cambiamos el texto
+            pausa1.abrir();    //Abrimos el paso para que los pintores sigan trabajando
+        }
+    }//GEN-LAST:event_parar_empleado1ActionPerformed
+
+    private void parar_empleado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parar_empleado2ActionPerformed
+        // TODO add your handling code here:
+        if (!botonPulsado2) //Si no se ha pulsado
+        {
+            botonPulsado2 = true;             //lo cambiamos a pulsado
+            parar_empleado2.setText("REANUDAR EMPLEADO 2");  //y cambiamos el texto
+            empleado2.setText("DESCANSANDO"); // Cambia la casilla de texto del empleado
+            pausa2.cerrar();    //Cerramos el paso para que los pintores se detengan
+        } else //Si ya se había pulsado
+        {
+            botonPulsado2 = false;            //lo cambiamos
+            parar_empleado2.setText("DETENER EMPLEADO 2");  //y cambiamos el texto
+            pausa2.abrir();    //Abrimos el paso para que los pintores sigan trabajando
+        }
+    }//GEN-LAST:event_parar_empleado2ActionPerformed
+
+    private void empleado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empleado2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_empleado2ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -92,6 +289,18 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea contenido_avion;
+    private javax.swing.JTextField contenido_cinta;
+    private javax.swing.JTextField empleado1;
+    private javax.swing.JTextField empleado2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton parar_empleado1;
+    private javax.swing.JButton parar_empleado2;
+    private javax.swing.JButton pausar_todo;
     // End of variables declaration//GEN-END:variables
 }
