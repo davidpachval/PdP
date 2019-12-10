@@ -18,6 +18,12 @@ public class Avion {
     private Semaphore control = new Semaphore(1);
     JTextArea contenido;
     private int i =0;
+
+    public ArrayList<Maleta> getAvion() {
+        return avion;
+    }
+
+
     
     public Avion(JTextArea contenido_avion) {
         avion = new ArrayList();
