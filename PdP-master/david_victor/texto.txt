@@ -1,0 +1,18 @@
+1576090374946Pasajero7Deja: Pasajero7-M-1
+1576090374962Pasajero15Deja: Pasajero15-M-1
+1576090374965Empleado2 Coge: Pasajero7-M-1
+1576090374990Pasajero12Deja: Pasajero12-M-1
+1576090375006Pasajero16Deja: Pasajero16-M-1
+1576090375052Pasajero9Deja: Pasajero9-M-1
+1576090375106Pasajero3Deja: Pasajero3-M-1
+1576090375150Pasajero18Deja: Pasajero18-M-1
+1576090375244Pasajero14Deja: Pasajero14-M-1
+1576090375253Empleado1 Coge: Pasajero15-M-1
+1576090375299Pasajero8Deja: Pasajero8-M-1
+1576090375325Pasajero11Deja: Pasajero11-M-1
+1576090375831Empleado2 Deja en el avión: Pasajero7-M-1
+1576090376166Empleado1 Deja en el avión: Pasajero15-M-1
+1576090376625Pasajero13Deja: Pasajero13-M-1
+1576090376625Empleado1 Coge: Pasajero12-M-1
+1576090376811Empleado2 Coge: Pasajero16-M-1
+1576090376812Pasajero20Deja: Pasajero20-M-1
