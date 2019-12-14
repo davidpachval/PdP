@@ -25,7 +25,7 @@ public class Cliente extends javax.swing.JFrame {
         {
             
             
-            cliente = new Socket(InetAddress.getByName("172.22.101.3"),5000);   //Creamos el socket para conectarnos al puerto 5000 del servidor
+            cliente = new Socket(InetAddress.getByName("127.0.0.1"),5000);   //Creamos el socket para conectarnos al puerto 5000 del servidor
             entrada = new DataInputStream(cliente.getInputStream());  //Creamos los canales de entrada/salida
             salida = new DataOutputStream(cliente.getOutputStream());
             mensaje="INICIO DE CLIENTE";
@@ -172,7 +172,7 @@ public class Cliente extends javax.swing.JFrame {
             DataInputStream entrada;
             DataOutputStream salida;
             String mensaje, respuesta1, respuesta2;
-            cliente = new Socket(InetAddress.getByName("172.22.101.3"),5000);   //Creamos el socket para conectarnos al puerto 5000 del servidor
+            cliente = new Socket(InetAddress.getByName("127.0.0.1"),5000);   //Creamos el socket para conectarnos al puerto 5000 del servidor
             entrada = new DataInputStream(cliente.getInputStream());  //Creamos los canales de entrada/salida
             salida = new DataOutputStream(cliente.getOutputStream());
             mensaje="INICIO DE CLIENTE";

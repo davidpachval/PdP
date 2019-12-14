@@ -6,6 +6,8 @@
 package david_victor;
 
 
+import java.io.IOException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,9 +17,12 @@ import java.util.logging.Logger;
  * @author Victor Ortiz Lahuerta
  */
 public class Interfaz extends javax.swing.JFrame {
+        
         Avion a;
         Cinta c;
         Servidor s;
+        long t0 = (new Date()).getTime();
+       
         private boolean botonPulsado1 = false;
         private boolean botonPulsado2 = false;
         private boolean botontodo = false;
@@ -28,21 +33,23 @@ public class Interfaz extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz
      */
-    public Interfaz() {
+    public Interfaz() throws IOException {
         initComponents();
         
         c = new Cinta(8, contenido_cinta);
         a = new Avion(contenido_avion);
         s = new Servidor(c, a);
         s.start();
-        Thread e1 = new Empleado(c, a, "Empleado1", empleado1, pausa1, todo);
-        Thread e2 = new Empleado(c, a, "Empleado2", empleado2, pausa2, todo);
+        GuardarDatos.CrearLog();
+        Thread e1 = new Empleado(c, a, "Empleado1", empleado1, pausa1, todo, t0);
+        Thread e2 = new Empleado(c, a, "Empleado2", empleado2, pausa2, todo, t0);
         for(int i=1; i<21; i++){
-            Thread p = new Pasajero(c, "Pasajero"+i, todo);
+            Thread p = new Pasajero(c, "Pasajero"+i, todo, t0);
             p.start();
         }
         e1.start();
         e2.start();
+        
         
     }
 
@@ -68,16 +75,20 @@ public class Interfaz extends javax.swing.JFrame {
         parar_empleado2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         contenido_avion = new javax.swing.JTextArea();
+        ver_cliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel1.setText("AEROPUERTO DE VICTOR ORTIZ LAHUERTA");
+        jLabel1.setText("PRÁCTICA VICTOR ORTIZ Y DAVID PACHECO");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 11, 1020, 43));
 
         jLabel2.setText("CONTENIDO_CINTA");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 60, -1, -1));
 
         contenido_cinta.setMaximumSize(new java.awt.Dimension(0, 8));
         contenido_cinta.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -86,21 +97,27 @@ public class Interfaz extends javax.swing.JFrame {
                 contenido_cintaActionPerformed(evt);
             }
         });
+        getContentPane().add(contenido_cinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 85, 1133, 41));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("EMPLEADO 1");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 153, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("EMPLEADO 2");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(835, 153, -1, -1));
+        getContentPane().add(empleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 190, 226, 38));
 
         empleado2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empleado2ActionPerformed(evt);
             }
         });
+        getContentPane().add(empleado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(781, 190, 247, 38));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("CONTENIDO_AVION");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 281, -1, -1));
 
         pausar_todo.setBackground(new java.awt.Color(255, 255, 255));
         pausar_todo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -111,6 +128,7 @@ public class Interfaz extends javax.swing.JFrame {
                 pausar_todoActionPerformed(evt);
             }
         });
+        getContentPane().add(pausar_todo, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 440, 211, 57));
 
         parar_empleado1.setBackground(new java.awt.Color(0, 51, 255));
         parar_empleado1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -121,6 +139,7 @@ public class Interfaz extends javax.swing.JFrame {
                 parar_empleado1ActionPerformed(evt);
             }
         });
+        getContentPane().add(parar_empleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 239, -1, -1));
 
         parar_empleado2.setBackground(new java.awt.Color(0, 0, 255));
         parar_empleado2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -131,88 +150,23 @@ public class Interfaz extends javax.swing.JFrame {
                 parar_empleado2ActionPerformed(evt);
             }
         });
+        getContentPane().add(parar_empleado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(792, 239, -1, -1));
 
         contenido_avion.setColumns(20);
         contenido_avion.setRows(5);
         jScrollPane1.setViewportView(contenido_avion);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(empleado1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(parar_empleado1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(parar_empleado2)
-                        .addGap(325, 325, 325))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1072, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(511, 511, 511)
-                        .addComponent(pausar_todo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(contenido_cinta, javax.swing.GroupLayout.PREFERRED_SIZE, 1133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(empleado2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(151, 151, 151))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addGap(239, 239, 239))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 972, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(523, 523, 523)
-                        .addComponent(jLabel5)))
-                .addGap(0, 157, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(contenido_cinta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(empleado1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(empleado2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(parar_empleado1)
-                    .addComponent(parar_empleado2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(pausar_todo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 325, 1072, 97));
+
+        ver_cliente.setBackground(new java.awt.Color(51, 204, 0));
+        ver_cliente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ver_cliente.setText("VER CLIENTE");
+        ver_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ver_clienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ver_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -229,6 +183,12 @@ public class Interfaz extends javax.swing.JFrame {
             pausar_todo.setText("REAUNUDAR TODO");  //y cambiamos el texto
             empleado1.setText("DESCANSANDO GENERAL"); // Cambia la casilla de texto del empleado
             empleado2.setText("DESCANSO GENERAL");
+            String texto = "////PARADA GENERAL DE LA ACTIVIDAD\\\\";
+            try {
+                GuardarDatos.ModificarLog(texto, t0);
+            } catch (IOException ex) {
+                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
             parar_empleado1.setEnabled(false);
             parar_empleado2.setEnabled(false);
             todo.cerrar();    //Cerramos el paso para que los pintores se detengan
@@ -236,6 +196,12 @@ public class Interfaz extends javax.swing.JFrame {
         {
             botontodo = false;            //lo cambiamos
             pausar_todo.setText("DETENER TODO");  //y cambiamos el texto
+            String texto = "////REANUDAIÓN GENERAL DE LA ACTIVIDAD\\\\";
+            try {
+                GuardarDatos.ModificarLog(texto, t0);
+            } catch (IOException ex) {
+                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
             parar_empleado1.setEnabled(true);
             parar_empleado2.setEnabled(true);
             todo.abrir();    //Abrimos el paso para que los pintores sigan trabajando
@@ -249,12 +215,23 @@ public class Interfaz extends javax.swing.JFrame {
             botonPulsado1 = true;             //lo cambiamos a pulsado
             parar_empleado1.setText("REANUDAR EMPLEADO 1");  //y cambiamos el texto
             empleado1.setText("DESCANSANDO"); // Cambia la casilla de texto del empleado
-            
+            String texto = "Empleado [1] DESCANSANDO";
+            try {
+                GuardarDatos.ModificarLog(texto, t0);
+            } catch (IOException ex) {
+                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
             pausa1.cerrar();    //Cerramos el paso para que los pintores se detengan
         } else //Si ya se había pulsado
         {
             botonPulsado1 = false;            //lo cambiamos
             parar_empleado1.setText("DETENER EMPLEADO 1");  //y cambiamos el texto
+            String texto = "Empleado [1] VUELVE AL TRABAJO";
+            try {
+                GuardarDatos.ModificarLog(texto, t0);
+            } catch (IOException ex) {
+                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
             pausa1.abrir();    //Abrimos el paso para que los pintores sigan trabajando
         }
     }//GEN-LAST:event_parar_empleado1ActionPerformed
@@ -266,11 +243,23 @@ public class Interfaz extends javax.swing.JFrame {
             botonPulsado2 = true;             //lo cambiamos a pulsado
             parar_empleado2.setText("REANUDAR EMPLEADO 2");  //y cambiamos el texto
             empleado2.setText("DESCANSANDO"); // Cambia la casilla de texto del empleado
+            String texto = "Empleado [2] DESCANSANDO";
+            try {
+                GuardarDatos.ModificarLog(texto, t0);
+            } catch (IOException ex) {
+                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
             pausa2.cerrar();    //Cerramos el paso para que los pintores se detengan
         } else //Si ya se había pulsado
         {
             botonPulsado2 = false;            //lo cambiamos
             parar_empleado2.setText("DETENER EMPLEADO 2");  //y cambiamos el texto
+            String texto = "Empleado [2] VUELVE AL TRABAJO";
+            try {
+                GuardarDatos.ModificarLog(texto, t0);
+            } catch (IOException ex) {
+                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
             pausa2.abrir();    //Abrimos el paso para que los pintores sigan trabajando
         }
     }//GEN-LAST:event_parar_empleado2ActionPerformed
@@ -278,6 +267,12 @@ public class Interfaz extends javax.swing.JFrame {
     private void empleado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empleado2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_empleado2ActionPerformed
+
+    private void ver_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ver_clienteActionPerformed
+        // TODO add your handling code here:
+        Cliente r = new Cliente();
+        r.setVisible(true);
+    }//GEN-LAST:event_ver_clienteActionPerformed
     
     /**
      * @param args the command line arguments
@@ -309,7 +304,11 @@ public class Interfaz extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz().setVisible(true);
+                try {
+                    new Interfaz().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         
@@ -329,5 +328,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton parar_empleado1;
     private javax.swing.JButton parar_empleado2;
     private javax.swing.JButton pausar_todo;
+    private javax.swing.JButton ver_cliente;
     // End of variables declaration//GEN-END:variables
 }

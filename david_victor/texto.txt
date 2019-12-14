@@ -1,0 +1,132 @@
+707-->Pasajero9Deja: Pasajero9-M-1
+724-->Empleado1 Coge: Pasajero9-M-1
+725-->Pasajero2Deja: Pasajero2-M-1
+755-->Pasajero14Deja: Pasajero14-M-1
+791-->Pasajero17Deja: Pasajero17-M-1
+804-->Pasajero20Deja: Pasajero20-M-1
+886-->Pasajero16Deja: Pasajero16-M-1
+948-->Pasajero18Deja: Pasajero18-M-1
+1005-->Empleado2 Coge: Pasajero2-M-1
+1025-->Pasajero12Deja: Pasajero12-M-1
+1056-->Pasajero5Deja: Pasajero5-M-1
+1103-->Pasajero1Deja: Pasajero1-M-1
+1324-->Empleado1 Deja en el avión: Pasajero9-M-1
+1773-->Empleado2 Deja en el avión: Pasajero2-M-1
+2162-->Pasajero11Deja: Pasajero11-M-1
+2162-->Empleado1 Coge: Pasajero14-M-1
+2797-->Pasajero10Deja: Pasajero10-M-1
+2797-->Empleado2 Coge: Pasajero17-M-1
+2847-->Empleado1 Deja en el avión: Pasajero14-M-1
+3733-->Empleado2 Deja en el avión: Pasajero17-M-1
+3855-->Empleado1 Coge: Pasajero20-M-1
+3856-->Pasajero3Deja: Pasajero3-M-1
+4355-->Empleado2 Coge: Pasajero16-M-1
+4355-->Pasajero13Deja: Pasajero13-M-1
+4426-->Empleado1 Deja en el avión: Pasajero20-M-1
+4761-->Empleado2 Deja en el avión: Pasajero16-M-1
+5521-->Empleado1 Coge: Pasajero18-M-1
+5522-->Pasajero6Deja: Pasajero6-M-1
+5522-->Empleado2 Coge: Pasajero12-M-1
+5521-->Pasajero7Deja: Pasajero7-M-1
+6288-->Empleado1 Deja en el avión: Pasajero18-M-1
+6378-->Empleado2 Deja en el avión: Pasajero12-M-1
+6977-->Empleado1 Coge: Pasajero5-M-1
+6977-->Pasajero8Deja: Pasajero8-M-1
+7128-->Empleado2 Coge: Pasajero1-M-1
+7128-->Pasajero14Deja: Pasajero14-M-2
+7664-->Empleado1 Deja en el avión: Pasajero5-M-1
+8112-->Empleado2 Deja en el avión: Pasajero1-M-1
+8732-->Pasajero4Deja: Pasajero4-M-1
+8732-->Empleado1 Coge: Pasajero11-M-1
+8777-->Empleado2 Coge: Pasajero10-M-1
+8777-->Pasajero20Deja: Pasajero20-M-2
+9356-->Empleado1 Deja en el avión: Pasajero11-M-1
+9538-->Empleado2 Deja en el avión: Pasajero10-M-1
+10185-->Pasajero9Deja: Pasajero9-M-2
+10185-->Empleado1 Coge: Pasajero3-M-1
+10376-->Empleado2 Coge: Pasajero13-M-1
+10376-->Pasajero19Deja: Pasajero19-M-1
+10725-->Empleado [2] DESCANSANDO
+10806-->Empleado1 Deja en el avión: Pasajero3-M-1
+11740-->Empleado1 Coge: Pasajero7-M-1
+11740-->Pasajero15Deja: Pasajero15-M-1
+12308-->Empleado1 Deja en el avión: Pasajero7-M-1
+12912-->Pasajero17Deja: Pasajero17-M-2
+12912-->Empleado1 Coge: Pasajero6-M-1
+13610-->Empleado [2] VUELVE AL TRABAJO
+13613-->Empleado2 Deja en el avión: Pasajero13-M-1
+13640-->Empleado1 Deja en el avión: Pasajero6-M-1
+14069-->Pasajero2Deja: Pasajero2-M-2
+14069-->Empleado1 Coge: Pasajero8-M-1
+14285-->Empleado2 Coge: Pasajero14-M-2
+14285-->Pasajero16Deja: Pasajero16-M-2
+14540-->Empleado1 Deja en el avión: Pasajero8-M-1
+14735-->Empleado2 Deja en el avión: Pasajero14-M-2
+15013-->Pasajero5Deja: Pasajero5-M-2
+15013-->Empleado1 Coge: Pasajero4-M-1
+15645-->Empleado2 Coge: Pasajero20-M-2
+15645-->Pasajero18Deja: Pasajero18-M-2
+15970-->Empleado1 Deja en el avión: Pasajero4-M-1
+16207-->Empleado2 Deja en el avión: Pasajero20-M-2
+17062-->Pasajero12Deja: Pasajero12-M-2
+17062-->Empleado1 Coge: Pasajero9-M-2
+17269-->Pasajero1Deja: Pasajero1-M-2
+17268-->Empleado2 Coge: Pasajero19-M-1
+17327-->////PARADA GENERAL DE LA ACTIVIDAD\\
+20778-->////REANUDAIÓN GENERAL DE LA ACTIVIDAD\\
+20782-->Empleado1 Deja en el avión: Pasajero9-M-2
+20782-->Empleado2 Deja en el avión: Pasajero19-M-1
+21596-->Empleado1 Coge: Pasajero15-M-1
+21596-->Pasajero11Deja: Pasajero11-M-2
+21643-->Empleado2 Coge: Pasajero17-M-2
+21643-->Pasajero10Deja: Pasajero10-M-2
+21948-->Empleado [1] DESCANSANDO
+22066-->Empleado2 Deja en el avión: Pasajero17-M-2
+22761-->Empleado2 Coge: Pasajero2-M-2
+22761-->Pasajero3Deja: Pasajero3-M-2
+23182-->Empleado [1] VUELVE AL TRABAJO
+23185-->Empleado1 Deja en el avión: Pasajero15-M-1
+23620-->Empleado2 Deja en el avión: Pasajero2-M-2
+23851-->Pasajero13Deja: Pasajero13-M-2
+23851-->Empleado1 Coge: Pasajero16-M-2
+24533-->Empleado2 Coge: Pasajero5-M-2
+24533-->Pasajero7Deja: Pasajero7-M-2
+24606-->Empleado1 Deja en el avión: Pasajero16-M-2
+25540-->Pasajero6Deja: Pasajero6-M-2
+25540-->Empleado1 Coge: Pasajero18-M-2
+25551-->Empleado2 Deja en el avión: Pasajero5-M-2
+26191-->Empleado2 Coge: Pasajero12-M-2
+26191-->Pasajero8Deja: Pasajero8-M-2
+26619-->Empleado1 Deja en el avión: Pasajero18-M-2
+26816-->Empleado2 Deja en el avión: Pasajero12-M-2
+27385-->Pasajero4Deja: Pasajero4-M-2
+27385-->Empleado1 Coge: Pasajero1-M-2
+27783-->Empleado2 Coge: Pasajero11-M-2
+27783-->Pasajero19Deja: Pasajero19-M-2
+27860-->Empleado1 Deja en el avión: Pasajero1-M-2
+28451-->Empleado2 Deja en el avión: Pasajero11-M-2
+28562-->Pasajero15Deja: Pasajero15-M-2
+28562-->Empleado1 Coge: Pasajero10-M-2
+29077-->Empleado2 Coge: Pasajero3-M-2
+29251-->Empleado1 Deja en el avión: Pasajero10-M-2
+29713-->Empleado2 Deja en el avión: Pasajero3-M-2
+29800-->Empleado [2] DESCANSANDO
+29867-->Empleado1 Coge: Pasajero13-M-2
+30516-->Empleado1 Deja en el avión: Pasajero13-M-2
+31299-->Empleado1 Coge: Pasajero6-M-2
+31882-->Empleado1 Deja en el avión: Pasajero6-M-2
+32364-->Empleado [1] DESCANSANDO
+35134-->Empleado [2] VUELVE AL TRABAJO
+35137-->Empleado2 Coge: Pasajero7-M-2
+35621-->Empleado2 Deja en el avión: Pasajero7-M-2
+36000-->Empleado [1] VUELVE AL TRABAJO
+36001-->Empleado1 Coge: Pasajero8-M-2
+36537-->Empleado2 Coge: Pasajero4-M-2
+36554-->Empleado1 Deja en el avión: Pasajero8-M-2
+36660-->////PARADA GENERAL DE LA ACTIVIDAD\\
+39580-->////REANUDAIÓN GENERAL DE LA ACTIVIDAD\\
+39586-->Empleado1 Coge: Pasajero19-M-2
+39586-->Empleado2 Deja en el avión: Pasajero4-M-2
+40263-->Empleado2 Coge: Pasajero15-M-2
+40601-->Empleado1 Deja en el avión: Pasajero19-M-2
+41332-->Empleado2 Deja en el avión: Pasajero15-M-2

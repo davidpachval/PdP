@@ -5,6 +5,9 @@
  */
 package david_victor;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /**
@@ -18,15 +21,17 @@ public class Empleado extends Thread{
     JTextField em;
     StartStop paso;
     StartStop todo;
+    String texto = "";
+    long t0;
 
-    public Empleado(Cinta cinta, Avion avion, String id_empleado, JTextField empleado, StartStop paso, StartStop todo) {
+    public Empleado(Cinta cinta, Avion avion, String id_empleado, JTextField empleado, StartStop paso, StartStop todo, long t0) {
         this.cinta = cinta;
         this.avion = avion;
         this.id_empleado = id_empleado;
         this.em = empleado;
         this.paso = paso;
         this.todo = todo;
-
+        this.t0=t0;
     }
     public void run(){
         for(int i=1; i<81; i++){
@@ -36,18 +41,26 @@ public class Empleado extends Thread{
                 
                 sleep(400 + (int) (700 * Math.random())); //Transporta maleta
                 m=cinta.extraer(); //Empleado coge maleta 
+                
                 todo.mirar();
                 paso.mirar();
                 imprimir(1, m);
+                texto = (id_empleado + " Coge: " + m.getId_maleta());
+                GuardarDatos.ModificarLog(texto, t0);
+
                 //System.out.println("-------------->>>"+id_empleado + " Coge: " + m.getId_maleta());
                 sleep(400 + (int) (700 * Math.random())); //Vuelve a la cinta
                 avion.insertar(m); //Empleado inserta maleta en el avión1
                 todo.mirar();
                 paso.mirar();
                 imprimir(0, m);
+                texto = (id_empleado + " Deja en el avión: " + m.getId_maleta());
+                GuardarDatos.ModificarLog(texto, t0);
                 //System.out.println("------------------------------------->>>"+ id_empleado + " deja: "+ m.getId_maleta());
                 
             } catch (InterruptedException e) {
+            } catch (IOException ex) {
+                Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         

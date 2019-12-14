@@ -5,6 +5,9 @@
  */
 package david_victor;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /**
@@ -17,12 +20,14 @@ public class Pasajero extends Thread {
     Cinta cinta;
     String id_pasajero;
     StartStop todo;
+    String texto = "";
+    long t0;
 
-
-    public Pasajero(Cinta cinta, String id_pasajero, StartStop todo) {
+    public Pasajero(Cinta cinta, String id_pasajero, StartStop todo, long t0) {
         this.cinta = cinta;
         this.id_pasajero = id_pasajero;
         this.todo = todo;
+        this.t0 = t0;
     }
 
     @Override
@@ -33,9 +38,13 @@ public class Pasajero extends Thread {
                 sleep(500 + (int) (1000 * Math.random()));
                 todo.mirar();
                 cinta.insertar(m); //Pasajero inserta la maleta en la cinta
+                texto = id_pasajero+"Deja: " +m.getId_maleta();
+                GuardarDatos.ModificarLog(texto, t0);
                 //System.out.println(id_pasajero + " deja: "+m.getId_maleta());
 
             } catch (InterruptedException e) {
+            } catch (IOException ex) {
+                Logger.getLogger(Pasajero.class.getName()).log(Level.SEVERE, null, ex);
             }                
 
         }
